@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight } from "@mantine/core";
+import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight, Button } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { Prism } from "@mantine/prism";
 import { useMemo } from "react";
@@ -67,9 +67,9 @@ export default function App() {
           <SimpleGrid cols={2}>
             <CopyButton value={"SCRIPT_ID"}>
               {({ copied, copy }) => (
-                <button color={copied ? "teal" : "blue"} onClick={copy}>
+                <Button color={copied ? "teal" : "blue"} onClick={copy}>
                   ID {copied ? "Copied" : "Copy"}
-                </button>
+                </Button>
               )}
             </CopyButton>
           </SimpleGrid>
@@ -87,19 +87,19 @@ const SecretCopyArea = ({ name, value }: { name: string; value: string }) => {
       <SimpleGrid cols={2}>
         <CopyButton value={name}>
           {({ copied, copy }) => (
-            <button color={copied ? "teal" : "blue"} onClick={copy}>
+            <Button color={copied ? "teal" : "blue"} onClick={copy}>
               ID {copied ? "Copied" : "Copy"}
-            </button>
+            </Button>
           )}
         </CopyButton>
         {value === "" || value === undefined ? (
-          <Text color="red">Valid Value</Text>
+          <Button disabled>Valid Value</Button>
         ) : (
           <CopyButton value={value}>
             {({ copied, copy }) => (
-              <button color={copied ? "teal" : "blue"} onClick={copy}>
+              <Button color={copied ? "teal" : "blue"} onClick={copy}>
                 Value {copied ? "Copied" : "Copy"}
-              </button>
+              </Button>
             )}
           </CopyButton>
         )}
