@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "parser/src/**"
+      - "parser/index.html"
+      - "parser/vite.config.ts"
   workflow_dispatch:
 
 permissions:
