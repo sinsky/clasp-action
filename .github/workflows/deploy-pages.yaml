@@ -67,7 +67,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           # Upload entire repository
-          path: "./dist"
+          path: "./parser/dist"
 
       - name: Deploy to GitHub Pages
         id: deployment
