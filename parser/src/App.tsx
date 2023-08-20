@@ -39,6 +39,7 @@ export default function App() {
       return null;
     }
   }, [claspJsonValue]);
+
   return (
     <Container my="md">
       <h1>Clasp Action Parser</h1>
@@ -83,7 +84,6 @@ const SecretCopyArea = ({ name, value }: { name: string; value: string }) => {
   return (
     <SimpleGrid style={{ gap: "0", margin: ".5rem 0" }}>
       <Text>{name}</Text>
-
       <SimpleGrid cols={2}>
         <CopyButton value={name}>
           {({ copied, copy }) => (
