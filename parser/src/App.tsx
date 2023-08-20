@@ -80,7 +80,7 @@ export default function App() {
             <CopyButton value={"SCRIPT_ID"}>
               {({ copied, copy }) => (
                 <Button color={copied ? "teal" : "blue"} onClick={copy}>
-                  ID {copied ? "Copied" : "Copy"}
+                  Name {copied ? "Copied" : "Copy"}
                 </Button>
               )}
             </CopyButton>

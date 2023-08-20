@@ -8,17 +8,17 @@ export default function SecretCopyArea({ name, value }: { name: string; value: s
         <CopyButton value={name}>
           {({ copied, copy }) => (
             <Button color={copied ? "teal" : "blue"} onClick={copy}>
-              ID {copied ? "Copied" : "Copy"}
+              Name {copied ? "Copied" : "Copy"}
             </Button>
           )}
         </CopyButton>
         {value === "" || value === undefined ? (
-          <Button disabled>Valid Value</Button>
+          <Button disabled>Valid Secret Value</Button>
         ) : (
           <CopyButton value={value}>
             {({ copied, copy }) => (
               <Button color={copied ? "teal" : "blue"} onClick={copy}>
-                Value {copied ? "Copied" : "Copy"}
+                Secret {copied ? "Copied" : "Copy"}
               </Button>
             )}
           </CopyButton>
