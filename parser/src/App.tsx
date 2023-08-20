@@ -55,7 +55,7 @@ export default function App() {
           autosize
         />
         <div>
-          <Text>Parse JSON to GitHub Actions yaml</Text>
+          <Text>useable GitHub Actions YAML and secrets</Text>
           <Prism language="yaml">{actionsStep}</Prism>
           <SecretCopyArea name={"ACCESS_TOKEN"} value={secrets?.ACCESS_TOKEN} />
           <SecretCopyArea name={"ID_TOKEN"} value={secrets?.ID_TOKEN} />
