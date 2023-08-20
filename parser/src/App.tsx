@@ -74,7 +74,7 @@ export default function App() {
           <SecretCopyItem name={"CLIENT_ID"} value={secrets?.CLIENT_ID} />
           <SecretCopyItem name={"CLIENT_SECRET"} value={secrets?.CLIENT_SECRET} />
           <Text style={{ borderLeft: "4px solid skyblue", paddingLeft: ".5rem", margin: ".5rem 0" }}>
-            <Highlight highlight={"SCRIPT_ID"}>Please create "SCRIPT_ID"</Highlight>
+            <Highlight highlight={"SCRIPT_ID"}>Please manual setting "SCRIPT_ID"</Highlight>
           </Text>
           <SimpleGrid cols={2}>
             <CopyButton value={"SCRIPT_ID"}>
