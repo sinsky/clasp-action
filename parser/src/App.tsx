@@ -3,6 +3,7 @@ import { useInputState } from "@mantine/hooks";
 import { Prism } from "@mantine/prism";
 import { useMemo } from "react";
 import DropArea from "./DropArea";
+import SecretCopyItem from "./SecretCopyItem";
 
 const actionsStep = `- uses: daikikatsuragawa/clasp-action@v1.1.0
   with:
@@ -67,11 +68,11 @@ export default function App() {
         <div>
           <Text>useable GitHub Actions YAML and secrets</Text>
           <Prism language="yaml">{actionsStep}</Prism>
-          <SecretCopyArea name={"ACCESS_TOKEN"} value={secrets?.ACCESS_TOKEN} />
-          <SecretCopyArea name={"ID_TOKEN"} value={secrets?.ID_TOKEN} />
-          <SecretCopyArea name={"REFRESH_TOKEN"} value={secrets?.REFRESH_TOKEN} />
-          <SecretCopyArea name={"CLIENT_ID"} value={secrets?.CLIENT_ID} />
-          <SecretCopyArea name={"CLIENT_SECRET"} value={secrets?.CLIENT_SECRET} />
+          <SecretCopyItem name={"ACCESS_TOKEN"} value={secrets?.ACCESS_TOKEN} />
+          <SecretCopyItem name={"ID_TOKEN"} value={secrets?.ID_TOKEN} />
+          <SecretCopyItem name={"REFRESH_TOKEN"} value={secrets?.REFRESH_TOKEN} />
+          <SecretCopyItem name={"CLIENT_ID"} value={secrets?.CLIENT_ID} />
+          <SecretCopyItem name={"CLIENT_SECRET"} value={secrets?.CLIENT_SECRET} />
           <Text style={{ borderLeft: "4px solid skyblue", paddingLeft: ".5rem", margin: ".5rem 0" }}>
             <Highlight highlight={"SCRIPT_ID"}>Please create "SCRIPT_ID"</Highlight>
           </Text>
@@ -89,31 +90,3 @@ export default function App() {
     </Container>
   );
 }
-
-const SecretCopyArea = ({ name, value }: { name: string; value: string }) => {
-  return (
-    <SimpleGrid style={{ gap: "0", margin: ".5rem 0" }}>
-      <Text>{name}</Text>
-      <SimpleGrid cols={2}>
-        <CopyButton value={name}>
-          {({ copied, copy }) => (
-            <Button color={copied ? "teal" : "blue"} onClick={copy}>
-              ID {copied ? "Copied" : "Copy"}
-            </Button>
-          )}
-        </CopyButton>
-        {value === "" || value === undefined ? (
-          <Button disabled>Valid Value</Button>
-        ) : (
-          <CopyButton value={value}>
-            {({ copied, copy }) => (
-              <Button color={copied ? "teal" : "blue"} onClick={copy}>
-                Value {copied ? "Copied" : "Copy"}
-              </Button>
-            )}
-          </CopyButton>
-        )}
-      </SimpleGrid>
-    </SimpleGrid>
-  );
-};
