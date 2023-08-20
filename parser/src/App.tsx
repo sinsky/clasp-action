@@ -1,4 +1,4 @@
-import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight, Button } from "@mantine/core";
+import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight, Button, Title } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { Prism } from "@mantine/prism";
 import { useMemo } from "react";
@@ -42,20 +42,20 @@ export default function App() {
 
   return (
     <Container my="md">
-      <h1>Clasp Action Parser</h1>
+      <Title order={1}>Clasp Action Parser</Title>
       <SimpleGrid cols={2} spacing={"md"} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
         <JsonInput
           placeholder="Please input your .clasprc.json"
           label="clasprc.json data"
           validationError="Invalid JSON"
           minRows={20}
-          description={<p>Please paste your .clasprc.json or file drop here</p>}
+          description={<Text>Please paste your .clasprc.json or file drop here</Text>}
           value={claspJsonValue}
           onChange={setClaspJsonValue}
           autosize
         />
         <div>
-          <p>Parse JSON to GitHub Actions yaml</p>
+          <Text>Parse JSON to GitHub Actions yaml</Text>
           <Prism language="yaml">{actionsStep}</Prism>
           <SecretCopyArea name={"ACCESS_TOKEN"} value={secrets?.ACCESS_TOKEN} />
           <SecretCopyArea name={"ID_TOKEN"} value={secrets?.ID_TOKEN} />
