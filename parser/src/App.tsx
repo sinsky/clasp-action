@@ -1,7 +1,8 @@
-import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight, Button, Title } from "@mantine/core";
+import { Container, SimpleGrid, CopyButton, JsonInput, Text, Highlight, Button, Title, Overlay } from "@mantine/core";
 import { useInputState } from "@mantine/hooks";
 import { Prism } from "@mantine/prism";
 import { useMemo } from "react";
+import DropArea from "./DropArea";
 
 const actionsStep = `- uses: daikikatsuragawa/clasp-action@v1.1.0
   with:
@@ -39,9 +40,18 @@ export default function App() {
       return null;
     }
   }, [claspJsonValue]);
-
+  const [isVisible, setIsVisible] = useInputState(false);
+  const zoneHide = () => setIsVisible(false);
   return (
-    <Container my="md">
+    <Container style={{}} my="md" onDragOver={() => setIsVisible(true)} onDragLeave={zoneHide} onDrop={zoneHide}>
+      {isVisible && (
+        <Overlay fixed>
+          <DropArea
+            setClaspJsonValue={setClaspJsonValue}
+            style={{ display: "block", position: "fixed", left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+          />
+        </Overlay>
+      )}
       <Title order={1}>Clasp Action Parser</Title>
       <SimpleGrid cols={2} spacing={"md"} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
         <JsonInput
